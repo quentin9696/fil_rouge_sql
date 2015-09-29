@@ -91,7 +91,7 @@ create table message_offre_demploi
   id_candidature integer references candidature not null,
   id_offre_emploi integer references offre_emploi not null,
   date_emploi timestamp,
-  corps_message text
+  corps_message text,
   PRIMARY KEY (id_candidature, id_offre_emploi)
 );
 
@@ -100,7 +100,7 @@ create table message_candidature
   id_candidature integer references candidature not null,
   id_offre_emploi integer references offre_emploi not null,
   date_envoi timestamp,
-  corps_message text
+  corps_message text,
   PRIMARY KEY (id_candidature, id_offre_emploi)
 );
 -- +----------------------------------------------------------------------------------------------+
