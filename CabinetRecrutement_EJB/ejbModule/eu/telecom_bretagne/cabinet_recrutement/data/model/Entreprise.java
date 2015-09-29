@@ -2,6 +2,7 @@ package eu.telecom_bretagne.cabinet_recrutement.data.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Set;
 
 
 /**
@@ -11,12 +12,6 @@ import javax.persistence.*;
 @Entity
 @NamedQuery(name="Entreprise.findAll", query="SELECT e FROM Entreprise e")
 public class Entreprise implements Serializable {
-	@Override
-	public String toString() {
-		return "Entreprise [id=" + id + ", nom=" + nom + ", descriptif="
-				+ descriptif + ", adressePostale=" + adressePostale + "]";
-	}
-
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -30,6 +25,10 @@ public class Entreprise implements Serializable {
 	private String descriptif;
 
 	private String nom;
+
+	//bi-directional many-to-one association to OffreEmploi
+	@OneToMany(mappedBy="entreprise")
+	private Set<OffreEmploi> offreEmplois;
 
 	public Entreprise() {
 	}
@@ -64,6 +63,28 @@ public class Entreprise implements Serializable {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public Set<OffreEmploi> getOffreEmplois() {
+		return this.offreEmplois;
+	}
+
+	public void setOffreEmplois(Set<OffreEmploi> offreEmplois) {
+		this.offreEmplois = offreEmplois;
+	}
+
+	public OffreEmploi addOffreEmploi(OffreEmploi offreEmploi) {
+		getOffreEmplois().add(offreEmploi);
+		offreEmploi.setEntreprise(this);
+
+		return offreEmploi;
+	}
+
+	public OffreEmploi removeOffreEmploi(OffreEmploi offreEmploi) {
+		getOffreEmplois().remove(offreEmploi);
+		offreEmploi.setEntreprise(null);
+
+		return offreEmploi;
 	}
 
 }
