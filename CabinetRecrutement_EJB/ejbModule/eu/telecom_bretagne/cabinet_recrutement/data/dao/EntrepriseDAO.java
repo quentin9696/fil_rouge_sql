@@ -45,5 +45,43 @@ public class EntrepriseDAO
 
 		return (List<Entreprise>) l;
 	}
+  public Entreprise persist(Entreprise entreprise) {
+	  
+	  if(entreprise != null) {
+		  try {
+			  entityManager.persist(entreprise);
+		  }
+		  catch(Exception e) {
+			  e.printStackTrace();
+		  }
+	  }
+	  return entreprise;
+  }
+  
+  public Entreprise update(Entreprise entreprise) {
+	  
+	  if(entreprise != null) {
+		  try {
+			  entityManager.merge(entreprise);
+		  }
+		  catch (Exception e) {
+			  e.printStackTrace();
+		  }
+	  }
+	  
+	  return entreprise;
+  }
+  
+  public void remove(Entreprise entreprise) {
+	  if(entreprise != null) {
+		  try {
+			  entityManager.remove(entreprise);
+		  }
+		  catch(Exception e) {
+			  e.printStackTrace();
+		  }
+	  }
+	  
+  }
 	//-----------------------------------------------------------------------------
 }
