@@ -12,5 +12,7 @@
 		<class>eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification</class>
 		<class>eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi</class>
 		<class>eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite</class>
+		<class>eu.telecom_bretagne.cabinet_recrutement.data.model.MessageCandidaturePK</class>
+		<class>eu.telecom_bretagne.cabinet_recrutement.data.model.MessageOffreDemploiPK</class>
 	</persistence-unit>
 </persistence>
