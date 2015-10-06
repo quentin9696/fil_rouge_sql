@@ -62,8 +62,8 @@ create table secteur_activite
 create table offre_emploi_secteur_activite
 (
   id_offre_emploi             integer references offre_emploi not null,
-  id_secteur_activite         integer references secteur_activite
-  
+  id_secteur_activite         integer references secteur_activite,
+  primary key(id_offre_emploi, id_secteur_activite)
 );
 
 
@@ -83,25 +83,26 @@ create table candidature
 create table secteur_activite_candidature
 (
   id_secteur_activite integer references secteur_activite,
-  id_candidature integer references candidature not null
+  id_candidature integer references candidature not null, 
+  primary key(id_secteur_activite, id_candidature)
 );
 
 create table message_offre_demploi
 (
-  id serial primary key,
   id_candidature integer references candidature not null,
   id_offre_emploi integer references offre_emploi not null,
   date_emploi timestamp,
-  corps_message text
+  corps_message text,
+  primary key(id_candidature, id_offre_emploi)  
 );
 
 create table message_candidature
 (
-  id serial primary key,
   id_candidature integer references candidature not null,
   id_offre_emploi integer references offre_emploi not null,
   date_envoi timestamp,
-  corps_message text
+  corps_message text,
+  primary key(id_candidature, id_offre_emploi)
 );
 -- +----------------------------------------------------------------------------------------------+
 -- | Insertion de quelques données de pour les tests                                              |
@@ -112,3 +113,22 @@ create table message_candidature
 insert into entreprise values (nextval('entreprise_id_seq'),'Télécom Bretagne','Télécom Bretagne est une grande école pionnière en formation, en recherche et en entrepreneuriat.','Plouzané');
 insert into entreprise values (nextval('entreprise_id_seq'),'ENIB','Une école d''ingénieur juste à côté...','Plouzané');
 
+-- Insertion des niveaux de qualification
+
+insert into niveau_qualification values (nextval('niveau_qualification_id_seq'), 'Bac +2');
+
+
+-- Insertion Candidatures
+insert into candidature values (nextval('candidature_id_seq'), 1, 'VALLIN' , 'Quentin', '05/11/1994', 'havre', 'toto@toto.fr', 'mon CV','06/10/2015');
+
+-- Insertion Secteur activite
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Telecom');
+
+-- Insertion Offre emploi
+insert into offre_emploi values(nextval('offre_emploi_id_seq'), 2, 1, 'titre', 'desc', 'profil comme ça');
+
+-- Insertion Offre emploi secteur activite
+insert into offre_emploi_secteur_activite values (1,1);
+
+-- Insertion Secteur activite condidature
+insert into secteur_activite_candidature values (1,1);
