@@ -38,13 +38,6 @@ public class OffreEmploiDAO
 		return entityManager.find(OffreEmploi.class, id);
 	}
 	//----------------------------------------------------------------------------
-  public List<OffreEmploi> findAll()
-	{
-		Query query = entityManager.createQuery("select entreprise from Entreprise entreprise order by entreprise.id");
-		List l = query.getResultList();
-
-		return (List<OffreEmploi>) l;
-	}
   public OffreEmploi persist(OffreEmploi offreEmploi) {
 	  
 	  if(offreEmploi != null) {
@@ -84,4 +77,31 @@ public class OffreEmploiDAO
 	  
   }
 	//-----------------------------------------------------------------------------
+  
+  public List<OffreEmploi> findByEntreprise(int idEntreprise)
+  {
+	  Query query = entityManager.createQuery("select offreEmploi from OffreEmploi offreEmploi " +
+	  "where offreEmploi.entreprise.id = :idE " +
+	  "order by offreEmploi.id desc");
+	  query.setParameter("idE", idEntreprise);
+	  List<OffreEmploi> l = query.getResultList();
+	  return l;
+  }
+  public List<OffreEmploi> findBySecteurActiviteAndNiveauQualification(int idSecteurActivite, int idNiveauQualification)
+  {
+	  Query query = entityManager.createQuery("select oe from OffreEmploi oe join oe.secteursActivite secteurs " +
+	  "where secteurs.id = :idSA and oe.niveauQualification.id = :idNQ " +
+	  "order by oe.id desc");
+	  query.setParameter("idSA", idSecteurActivite);
+	  query.setParameter("idNQ", idNiveauQualification);
+	  List<OffreEmploi> l = query.getResultList();
+	  return l;
+  }
+  public List<OffreEmploi> findAll()
+  {
+	  Query query = entityManager.createQuery("select offreEmploi from OffreEmploi offreEmploi " +
+	  "order by offreEmploi.id desc");
+	  List l = query.getResultList();
+	  return (List<OffreEmploi>)l;
+  }
 }

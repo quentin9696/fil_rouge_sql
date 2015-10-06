@@ -40,13 +40,6 @@ public class CandidatureDAO
 		return entityManager.find(Candidature.class, id);
 	}
 	//----------------------------------------------------------------------------
-  public List<Candidature> findAll()
-	{
-		Query query = entityManager.createQuery("select entreprise from Entreprise entreprise order by entreprise.id");
-		List l = query.getResultList();
-
-		return (List<Candidature>) l;
-	}
   public Candidature persist(Candidature candidature) {
 	  
 	  if(candidature != null) {
@@ -87,12 +80,21 @@ public class CandidatureDAO
   }
 	//-----------------------------------------------------------------------------
   
-  public List<Candidature> listCandidature(SecteurActivite secteurActivite, NiveauQualification niveauQualification) {
-	  
-	  Query query = entityManager.createQuery("select candidature from Candidature candidature "
-	  		+ "where niveauQualification.id=candidature.niveauQualification and ");
-	  
-	  
-	  return null;
+  public List<Candidature> findBySecteurActiviteAndNiveauQualification(int idSecteurActivite, int idNiveauQualification)
+  {
+	  Query query = entityManager.createQuery("select c from Candidature c join c.secteursActivite secteur " +
+	  "where secteur.id = :idSA and c.niveauQualification.id = :idNQ " +
+	  "order by c.id desc");
+	  query.setParameter("idSA", idSecteurActivite);
+	  query.setParameter("idNQ", idNiveauQualification);
+	  List<Candidature> l = query.getResultList();
+	  return l;
+  }
+  public List<Candidature> findAll()
+  {
+	  Query query = entityManager.createQuery("select candidature from Candidature candidature " +
+	  "order by candidature.id desc");
+	  List l = query.getResultList();
+	  return (List<Candidature>)l;
   }
 }

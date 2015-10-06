@@ -38,13 +38,6 @@ public class SecteurActiviteDAO
 		return entityManager.find(SecteurActivite.class, id);
 	}
 	//----------------------------------------------------------------------------
-  public List<SecteurActivite> findAll()
-	{
-		Query query = entityManager.createQuery("select entreprise from Entreprise entreprise order by entreprise.id");
-		List l = query.getResultList();
-
-		return (List<SecteurActivite>) l;
-	}
   public SecteurActivite persist(SecteurActivite secteurActivite) {
 	  
 	  if(secteurActivite != null) {
@@ -84,4 +77,11 @@ public class SecteurActiviteDAO
 	  
   }
 	//-----------------------------------------------------------------------------
+  public List<SecteurActivite> findAll()
+  {
+	  Query query = entityManager.createQuery("select secteurActivite from SecteurActivite secteurActivite " +
+	  "order by secteurActivite.id");
+	  List l = query.getResultList();
+	  return (List<SecteurActivite>)l;
+  }
 }

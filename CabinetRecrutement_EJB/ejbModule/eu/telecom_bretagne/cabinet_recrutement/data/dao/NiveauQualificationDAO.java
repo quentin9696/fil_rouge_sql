@@ -38,13 +38,6 @@ public class NiveauQualificationDAO
 		return entityManager.find(NiveauQualification.class, id);
 	}
 	//----------------------------------------------------------------------------
-  public List<NiveauQualification> findAll()
-	{
-		Query query = entityManager.createQuery("select entreprise from Entreprise entreprise order by entreprise.id");
-		List l = query.getResultList();
-
-		return (List<NiveauQualification>) l;
-	}
   public NiveauQualification persist(NiveauQualification niveauQualification) {
 	  
 	  if(niveauQualification != null) {
@@ -84,4 +77,11 @@ public class NiveauQualificationDAO
 	  
   }
 	//-----------------------------------------------------------------------------
+  public List<NiveauQualification> findAll()
+  {
+	  Query query = entityManager.createQuery("select niveauQualification from NiveauQualification niveauQualification " +
+	  "order by niveauQualification.id");
+	  List l = query.getResultList();
+	  return (List<NiveauQualification>)l;
+  }
 }
