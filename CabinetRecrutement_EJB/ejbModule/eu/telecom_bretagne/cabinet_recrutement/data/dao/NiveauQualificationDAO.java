@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import eu.telecom_bretagne.cabinet_recrutement.data.model.MessageOffreDemploi;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification;
 
 /**
@@ -66,9 +67,10 @@ public class NiveauQualificationDAO
   }
   
   public void remove(NiveauQualification niveauQualification) {
+	  NiveauQualification niveauQualificationASuppr = entityManager.merge(niveauQualification);
 	  if(niveauQualification != null) {
 		  try {
-			  entityManager.remove(niveauQualification);
+			  entityManager.remove(niveauQualificationASuppr);
 		  }
 		  catch(Exception e) {
 			  e.printStackTrace();

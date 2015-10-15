@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.MessageCandidature;
 
 /**
@@ -73,9 +74,10 @@ public class MessageCandidatureDAO
   }
   
   public void remove(MessageCandidature messageCandidature) {
+	  MessageCandidature messageCandidatureASuppr = entityManager.merge(messageCandidature);
 	  if(messageCandidature != null) {
 		  try {
-			  entityManager.remove(messageCandidature);
+			  entityManager.remove(messageCandidatureASuppr);
 		  }
 		  catch(Exception e) {
 			  e.printStackTrace();

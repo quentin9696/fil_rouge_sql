@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import eu.telecom_bretagne.cabinet_recrutement.data.model.MessageOffreDemploi;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi;
 
 /**
@@ -66,9 +67,10 @@ public class OffreEmploiDAO
   }
   
   public void remove(OffreEmploi offreEmploi) {
+	  OffreEmploi offEmploiASuppr = entityManager.merge(offreEmploi);
 	  if(offreEmploi != null) {
 		  try {
-			  entityManager.remove(offreEmploi);
+			  entityManager.remove(offEmploiASuppr);
 		  }
 		  catch(Exception e) {
 			  e.printStackTrace();
