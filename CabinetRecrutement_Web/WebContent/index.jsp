@@ -13,7 +13,8 @@
     <h2>Menu principal</h2>
     
     <ul>
-      <li><a href="liste_entreprises.jsp">Liste des entreprises référencées</a></li>
+    	<li><a href="creation_entreprise.jsp">Création d'une nouvelle entreprise</a></li>
+    	<li><a href="liste_entreprises.jsp">Liste des entreprises référencées</a></li>
     </ul>
   
   </body>
