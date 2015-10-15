@@ -27,4 +27,7 @@ public interface IServiceEntreprise
 	 */
 	public List<Entreprise> listeDesEntreprises();
 	//-----------------------------------------------------------------------------
+	
+	public Entreprise ajoutEntreprise(Entreprise e);
+	
 }

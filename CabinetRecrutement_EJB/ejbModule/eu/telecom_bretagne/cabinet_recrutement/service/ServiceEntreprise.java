@@ -42,4 +42,9 @@ public class ServiceEntreprise implements IServiceEntreprise
 		return entrepriseDAO.findAll();
 	}
 	// -----------------------------------------------------------------------------
+	@Override
+	public Entreprise ajoutEntreprise(Entreprise e) {
+		// TODO Auto-generated method stub
+		return entrepriseDAO.persist(e);
+	}
 }
