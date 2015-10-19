@@ -50,7 +50,8 @@ create table offre_emploi
   id_niveau_qualification integer references niveau_qualification not null,
   titre           varchar(30) not null,
   descriptif_mission text,
-  profil_recherche text
+  profil_recherche text,
+  date_depot timestamp 
 );
 
 create table secteur_activite
@@ -77,7 +78,7 @@ create table candidature
   adresse_postale   text,
   adresse_email     text,
   cv                text,
-  date_depot        timestamp 
+  date_depot        timestamp
 );
 
 create table secteur_activite_candidature
@@ -125,7 +126,7 @@ insert into candidature values (nextval('candidature_id_seq'), 1, 'VALLIN' , 'Qu
 insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Telecom');
 
 -- Insertion Offre emploi
-insert into offre_emploi values(nextval('offre_emploi_id_seq'), 2, 1, 'titre', 'desc', 'profil comme ça');
+insert into offre_emploi values(nextval('offre_emploi_id_seq'), 2, 1, 'titre', 'desc', 'profil comme ça', '19/10/2015');
 
 -- Insertion Offre emploi secteur activite
 insert into offre_emploi_secteur_activite values (1,1);
