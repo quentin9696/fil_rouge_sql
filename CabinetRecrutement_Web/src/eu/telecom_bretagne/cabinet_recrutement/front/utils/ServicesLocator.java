@@ -54,7 +54,11 @@ public class ServicesLocator
 		else if(nomEJB.equals("ServiceCandidat"))
 			nomJNDI = "java:global/CabinetRecrutement/CabinetRecrutement_EJB/ServiceCandidat!eu.telecom_bretagne.cabinet_recrutement.service.IServiceCandidat";
 		else if(nomEJB.equals("ServiceOffreEmplois")) 
-			nomJNDI = "java:global/CabinetRecrutement/CabinetRecrutement_EJB/OffreEmplois!eu.telecom_bretagne.cabinet_recrutement.service.IOffreEmplois";
+			nomJNDI = "java:global/CabinetRecrutement/CabinetRecrutement_EJB/ServiceOffreEmplois!eu.telecom_bretagne.cabinet_recrutement.service.IServiceOffreEmplois";
+		else if(nomEJB.equals("ServiceSecteurActivite")) 
+			nomJNDI = "java:global/CabinetRecrutement/CabinetRecrutement_EJB/ServiceSecteurActivite!eu.telecom_bretagne.cabinet_recrutement.service.IServiceSecteurActiviteRemote";
+		else if(nomEJB.equals("ServiceNiveauQualification")) 
+			nomJNDI = "java:global/CabinetRecrutement/CabinetRecrutement_EJB/ServiceNiveauQualification!eu.telecom_bretagne.cabinet_recrutement.service.IServiceNiveauQualificationRemote";
 		
 		
 		// ATTENTION !!! La récupération d'un DAO n'existe ici que

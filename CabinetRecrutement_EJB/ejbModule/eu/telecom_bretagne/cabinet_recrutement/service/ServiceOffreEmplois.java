@@ -29,5 +29,12 @@ public class ServiceOffreEmplois implements IServiceOffreEmplois {
 		// TODO Auto-generated method stub
 		return offreEmploiDAO.findAll();
 	}
+	@Override
+	public OffreEmploi getOffreEmploisById(int id) {
+		
+		return offreEmploiDAO.findById(id);
+	}
+	
+	
 
 }

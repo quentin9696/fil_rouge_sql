@@ -2,7 +2,9 @@ package eu.telecom_bretagne.cabinet_recrutement.data.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Set;
+import static javax.persistence.FetchType.EAGER;
 
 
 /**
@@ -19,6 +21,9 @@ public class OffreEmploi implements Serializable {
 	@SequenceGenerator(name="OFFRE_EMPLOI_ID_GENERATOR", sequenceName="OFFRE_EMPLOI_ID_SEQ", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="OFFRE_EMPLOI_ID_GENERATOR")
 	private Integer id;
+
+	@Column(name="date_depot")
+	private Timestamp dateDepot;
 
 	@Column(name="descriptif_mission")
 	private String descriptifMission;
@@ -47,7 +52,7 @@ public class OffreEmploi implements Serializable {
 	private NiveauQualification niveauQualification;
 
 	//bi-directional many-to-many association to SecteurActivite
-	@ManyToMany
+	@ManyToMany(fetch = EAGER)
 	@JoinTable(
 		name="offre_emploi_secteur_activite"
 		, joinColumns={
@@ -68,6 +73,14 @@ public class OffreEmploi implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Timestamp getDateDepot() {
+		return this.dateDepot;
+	}
+
+	public void setDateDepot(Timestamp dateDepot) {
+		this.dateDepot = dateDepot;
 	}
 
 	public String getDescriptifMission() {

@@ -8,7 +8,8 @@
 <%
   // Récupération du service (bean session)
 	 IServiceOffreEmplois serviceOffre = (IServiceOffreEmplois) ServicesLocator.getInstance().getRemoteInterface("ServiceOffreEmplois");
-// Appel de la fonctionnalité désirée auprès du service
+	// Appel de la fonctionnalité désirée auprès du service
+	List<OffreEmploi> listes = serviceOffre.getOffreEmplois();
 %>
 
 <html>
@@ -21,27 +22,33 @@
 
   <body>
   
-		<h2>Liste des entreprises référencées :</h2>
+<h2>Liste des offres d'emploi référencées :</h2>
 
-		<table id="affichage">
-		  <tr>
-		    <th>Identifiant</th>
-		    <th>Nom</th>
-		    <th>Adresse postale (ville)</th>
-		  </tr>
-		  <%
-		  for(Entreprise entreprise : entreprises)
-		  {
-		    %>
-		    <tr>
-		     <td>ENT_<%=entreprise.getId()%></td>
-		     <td><a href="infos_entreprise.jsp?id=<%=entreprise.getId()%>"><%=entreprise.getNom()%></a></td>
-		     <td><%=entreprise.getAdressePostale()%></td>
-		    </tr>
-		    <%
-		  }
-		  %>
-		</table>
+<table id="affichage">
+  <tr>
+    <th>Numéro</th>
+    <th>Titre</th>
+    
+    <th>Entreprise</th>
+    <th>Niveau de qualification</th>
+    <th>Date de dépôt</th>
+    
+  </tr>
+  
+      <tr>
+       <%
+       	for(OffreEmploi offre : listes) {
+       		%> <td><%=offre.getId()%></td>
+       		<td><a href="info_offre_emplois.jsp?id=<%=offre.getId()%>"><%=offre.getTitre()%></a></td>
+       		<td><%=offre.getEntreprise().getNom()%></td>
+       		<td><%=offre.getNiveauQualification().getIntitule()%></td>
+       		<td><%=offre.getDateDepot()%></td>
+       	<%
+       	}
+       %>
+      </tr>   
+</table>
+
 
     <a href="index.jsp">Retour au menu</a>
 
