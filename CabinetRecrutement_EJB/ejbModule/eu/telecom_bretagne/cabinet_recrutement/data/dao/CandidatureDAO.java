@@ -50,14 +50,15 @@ public class CandidatureDAO
 			  e.printStackTrace();
 		  }
 	  }
-	  return candidature;
+	  
+	  return entityManager.merge(candidature);
   }
   
   public Candidature update(Candidature candidature) {
 	  
 	  if(candidature != null) {
 		  try {
-			  entityManager.merge(candidature);
+			  candidature = entityManager.merge(candidature);
 		  }
 		  catch (Exception e) {
 			  e.printStackTrace();

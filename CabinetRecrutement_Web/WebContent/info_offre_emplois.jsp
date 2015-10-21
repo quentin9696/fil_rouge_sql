@@ -29,8 +29,8 @@
   	}
   	else if (request.getParameter("id").matches("^[0-9]*$")) {
   		
-  		//int id = new Integer(request.getParameter("id"));
-  		int id = 1;
+  		int id = new Integer(request.getParameter("id"));
+  		//int id = 1;
   		OffreEmploi offre = serviceOffre.getOffreEmploisById(id);
   		if(offre == null) {
   			out.println("L'offre d'emploi " + id + " n'a pas été trouvée ! <br/>");

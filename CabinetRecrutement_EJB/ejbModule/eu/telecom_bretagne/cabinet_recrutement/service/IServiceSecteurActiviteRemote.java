@@ -10,4 +10,5 @@ import eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite;
 public interface IServiceSecteurActiviteRemote {
 
 	public List<SecteurActivite> getSecteurActivite();
+	public SecteurActivite getSecteurActiviteById(int id);
 }

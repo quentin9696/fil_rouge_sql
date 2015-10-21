@@ -1,8 +1,11 @@
 package eu.telecom_bretagne.cabinet_recrutement.data.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Set;
 
 
@@ -181,5 +184,4 @@ public class Candidature implements Serializable {
 	public void setSecteurActivites(Set<SecteurActivite> secteurActivites) {
 		this.secteurActivites = secteurActivites;
 	}
-
 }

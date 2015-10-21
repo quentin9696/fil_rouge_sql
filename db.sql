@@ -116,14 +116,43 @@ insert into entreprise values (nextval('entreprise_id_seq'),'ENIB','Une école d
 
 -- Insertion des niveaux de qualification
 
-insert into niveau_qualification values (nextval('niveau_qualification_id_seq'), 'Bac +2');
+insert into niveau_qualification values (nextval('niveau_qualification_id_seq'), 'CAP/BEP');
+insert into niveau_qualification values (nextval('niveau_qualification_id_seq'), 'Bac');
+insert into niveau_qualification values (nextval('niveau_qualification_id_seq'), 'Bac +3');
+insert into niveau_qualification values (nextval('niveau_qualification_id_seq'), 'Bac +5');
+insert into niveau_qualification values (nextval('niveau_qualification_id_seq'), 'Doctorat');
 
 
 -- Insertion Candidatures
 insert into candidature values (nextval('candidature_id_seq'), 1, 'VALLIN' , 'Quentin', '05/11/1994', 'havre', 'toto@toto.fr', 'mon CV','06/10/2015');
 
 -- Insertion Secteur activite
-insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Telecom');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Achat/Logistique');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Agroalimentaire');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'BTP/Immobilier');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Comptabilité');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Electronique/Microélectronique');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Formation/Enseignement');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Informatique');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Public/Parapublic');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Télécom/Réseaux');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Assistanat/Secrétariat');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Assurance');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Commercial');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Direction Générale/Executive');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Environnement');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Hôtellerie/Restauration/Tourisme');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Juridique/Fiscal/Droit');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Ressources Humaines');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Agriculture');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Audit/Conseil/Expertises');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Communication/Art/Média/Mode');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Distribution/Commerce');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Finance/Banque');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Industrie/Ingénierie/Production');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Marketing');
+insert into secteur_activite values(nextval('secteur_activite_id_seq'), 'Santé/Social/Biologie/Humanitaire');
+
 
 -- Insertion Offre emploi
 insert into offre_emploi values(nextval('offre_emploi_id_seq'), 2, 1, 'titre', 'desc', 'profil comme ça', '19/10/2015');

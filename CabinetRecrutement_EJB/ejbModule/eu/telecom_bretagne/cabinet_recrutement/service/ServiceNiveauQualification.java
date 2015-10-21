@@ -18,6 +18,7 @@ import eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification;
 @LocalBean
 public class ServiceNiveauQualification implements IServiceNiveauQualificationRemote {
 
+
 	@EJB 
 	private NiveauQualificationDAO niveauQualiticationDAO;
     /**
@@ -32,5 +33,10 @@ public class ServiceNiveauQualification implements IServiceNiveauQualificationRe
 		
 		return niveauQualiticationDAO.findAll();
 	}
-
+	
+	@Override
+	public NiveauQualification getNiveauQualificationById(int id) {
+		// TODO Auto-generated method stub
+		return niveauQualiticationDAO.findById(id);
+	}
 }

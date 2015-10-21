@@ -10,4 +10,5 @@ import eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification;
 public interface IServiceNiveauQualificationRemote {
 
 	public List<NiveauQualification> getNiveauQualif();
+	public NiveauQualification getNiveauQualificationById(int id);
 }

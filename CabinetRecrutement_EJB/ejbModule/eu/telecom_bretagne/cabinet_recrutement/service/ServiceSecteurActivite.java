@@ -32,4 +32,10 @@ public class ServiceSecteurActivite implements IServiceSecteurActiviteRemote {
 		return secteurActiviteDAO.findAll();
 	}
 
+	@Override
+	public SecteurActivite getSecteurActiviteById(int id) {
+		// TODO Auto-generated method stub
+		return secteurActiviteDAO.findById(id);
+	}
+
 }

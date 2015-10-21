@@ -17,6 +17,7 @@
     	<li><a href="liste_entreprises.jsp">Liste des entreprises référencées</a></li>
     	<li><a href="liste_offres.jsp">Liste des offres d'emplois référencées</a></li>
     	<li><a href="creation_candidature.jsp">Création d'un nouveau candidat</a></li>
+    	<li><a href="liste_candidature.jsp">Liste des candidature</a></li>
     </ul>
   
   </body>
