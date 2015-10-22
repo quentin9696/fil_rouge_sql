@@ -16,33 +16,44 @@
 
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Cabinet de recrutement : liste des entreprises référencées</title>
+    <title>Cabinet de recrutement</title>
     <link rel="stylesheet" href="styles.css" type="text/css" />
   </head>
 
   <body>
-  
+  		
+  		<%@include file="header.jsp" %>
+  		<div id="content">
+  		
 		<%
 		  // Test en cas d'appel incorrect
 		  if(idString == null)
 		  {
 		    %>
-		    <p class="erreur">Erreur : il n'y a aucune entreprise qui corresponde à cette recherche.</p>
+		    <p class="erreur">Erreur : il n'y a aucune entreprise qui correspond à cette recherche.</p>
 		    <%
 		  }
 		  else // C'est à priori correct...
 		  {
 		  	// Transformation de la chaine "idString" en un entier
-        int id = Integer.parseInt(idString);
+        	int id = Integer.parseInt(idString);
 		  	// Récupération du service (bean session)
 		    IServiceEntreprise serviceEntreprise = (IServiceEntreprise) ServicesLocator.getInstance().getRemoteInterface("ServiceEntreprise");
 		  	// Appel de la fonctionnalité désirée auprès du service
 		    Entreprise entreprise = serviceEntreprise.getEntreprise(id);
+		  	
+		  	if(entreprise == null) {
+		  		%>
+		  		<p class="erreur">Erreur : il n'y a aucune entreprise qui correspond à cette recherche.</p>
+		  		<%
+		  	}
+		  	else {
+		  	
 		    %>
 		    
 		    <!-- Affichage des information récupérées -->
 		    
-		    <h2>Infos entreprise :</h2>
+		    <h2>Infos entreprise</h2>
 
 		    <table id="affichage">
 		      <tr>
@@ -70,13 +81,11 @@
 		        </td>
 		      </tr>
 		    </table>
-        
-        <a href="liste_entreprises.jsp">Retour à la liste des entreprises</a>
-
 		    <%
+		  	}
 		  }
 		%>
-		
+		</div>
   </body>
   
 </html>

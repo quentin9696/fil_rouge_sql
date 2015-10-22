@@ -23,35 +23,35 @@
 
   <body>
   
-<h2>Liste des offres d'emploi référencées :</h2>
-
-<table id="affichage">
-  <tr>
-    <th>Numéro</th>
-    <th>Titre</th>
-    
-    <th>Entreprise</th>
-    <th>Niveau de qualification</th>
-    <th>Date de dépôt</th>
-    
-  </tr>
-  
-      <tr>
-       <%
-       	for(OffreEmploi offre : listes) {
-       		%> <td><%=offre.getId()%></td>
-       		<td><a href="info_offre_emplois.jsp?id=<%=offre.getId()%>"><%=offre.getTitre()%></a></td>
-       		<td><%=offre.getEntreprise().getNom()%></td>
-       		<td><%=offre.getNiveauQualification().getIntitule()%></td>
-       		<td><%=Utils.date2String(offre.getDateDepot())%></td>
-       	<%
-       	}
-       %>
-      </tr>   
-</table>
-
-
-    <a href="index.jsp">Retour au menu</a>
+  	<%@include file="header.jsp" %>
+  		<div id="content">
+			<h2>Liste des offres d'emploi référencées :</h2>
+			
+			<table id="affichage">
+			  <tr>
+			    <th>Numéro</th>
+			    <th>Titre</th>
+			    
+			    <th>Entreprise</th>
+			    <th>Niveau de qualification</th>
+			    <th>Date de dépôt</th>
+			    
+			  </tr>
+			  
+			      <tr>
+			       <%
+			       	for(OffreEmploi offre : listes) {
+			       		%> <td><%=offre.getId()%></td>
+			       		<td><a href="infos_offre_emplois.jsp?id=<%=offre.getId()%>"><%=offre.getTitre()%></a></td>
+			       		<td><%=offre.getEntreprise().getNom()%></td>
+			       		<td><%=offre.getNiveauQualification().getIntitule()%></td>
+			       		<td><%=Utils.date2String(offre.getDateDepot())%></td>
+			       	<%
+			       	}
+			       %>
+			      </tr>   
+			</table>
+		</div>
 
   </body>
   

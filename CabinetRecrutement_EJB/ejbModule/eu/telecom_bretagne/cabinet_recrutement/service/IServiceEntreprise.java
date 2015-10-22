@@ -30,4 +30,6 @@ public interface IServiceEntreprise
 	
 	public Entreprise ajoutEntreprise(Entreprise e);
 	
+	public Entreprise modiferEntreprise(Entreprise e);
+	
 }

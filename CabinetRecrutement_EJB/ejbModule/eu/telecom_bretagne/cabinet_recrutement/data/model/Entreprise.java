@@ -3,6 +3,7 @@ package eu.telecom_bretagne.cabinet_recrutement.data.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Set;
+import static javax.persistence.FetchType.EAGER;
 
 
 /**
@@ -27,7 +28,7 @@ public class Entreprise implements Serializable {
 	private String nom;
 
 	//bi-directional many-to-one association to OffreEmploi
-	@OneToMany(mappedBy="entreprise")
+	@OneToMany(mappedBy="entreprise", fetch = EAGER)
 	private Set<OffreEmploi> offreEmplois;
 
 	public Entreprise() {

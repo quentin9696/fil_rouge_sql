@@ -1,3 +1,4 @@
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.front.utils.Utils"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <%@page import="eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator,
@@ -13,19 +14,20 @@
 
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Cabinet de recrutement : Nouvelle entreprise référencée</title>
+    <title>Cabinet de recrutement</title>
     <link rel="stylesheet" href="styles.css" type="text/css" />
   </head>
 
   <body>
   
-		
+		<%@include file="header.jsp" %>
+  		<div id="content">
 		
 		<%
 		String nom = request.getParameter("nom");
 		String desc = request.getParameter("descriptif");
 		String add = request.getParameter("adresse_postale");
-		
+
 		if(nom == null) {
 			out.println("Erreur : Le nom ne doit pas être nul !");
 		}
@@ -46,7 +48,9 @@
 				}
 				
 				if(find) {
-					out.println("Erreur : L'entreprise " + entreprise.getNom() + " existe déjà ! <br/>");
+					%>
+					<p class="erreur">Erreur : il y a déjà une entreprise à ce nom.</p>
+					<%
 				}
 				else {
 					Entreprise nouvelleEntreprise = serviceEntreprise.ajoutEntreprise(entreprise);
@@ -69,7 +73,7 @@
 				        <tr>
 				          <th>Descriptif :</th>
 				          <td>
-				            <%=nouvelleEntreprise.getDescriptif()%>
+				            <%=Utils.text2HTML(nouvelleEntreprise.getDescriptif())%>
 				          </td>
 				        </tr>
 				        <tr>
@@ -89,9 +93,7 @@
 		}
 		
 		%>
-		
-		<a href="index.jsp">Retour au menu</a>
-		
+		</div>
 
   </body>
   

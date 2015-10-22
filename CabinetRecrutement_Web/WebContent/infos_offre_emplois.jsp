@@ -24,17 +24,22 @@
   </head>
 
   <body>
+  <%@include file="header.jsp" %>
+  		<div id="content">
   <%
   	if(request.getParameter("id").isEmpty()) {
-  		out.println("L'offre d'emploi doit être spécifiée <br/>");
+  		%>
+  		<p class="erreur" >L'offre d'emploi doit être spécifiée</p>
+  		<%
   	}
   	else if (request.getParameter("id").matches("^[0-9]*$")) {
   		
   		int id = new Integer(request.getParameter("id"));
-  		//int id = 1;
   		OffreEmploi offre = serviceOffre.getOffreEmploisById(id);
   		if(offre == null) {
-  			out.println("L'offre d'emploi " + id + " n'a pas été trouvée ! <br/>");
+  			%>
+  			<p class="erreur" >L'offre n'a pa été trouvée. </p>
+  			<%
   		}
   		else {
   %>
@@ -59,7 +64,8 @@
         <tr>
           <th>Entreprise :</th>
           <td>
-            <u><%=offre.getEntreprise().getNom()%></u>
+            <u><%=offre.getEntreprise().getNom()%></u><br/> 
+            <%=Utils.text2HTML(offre.getEntreprise().getDescriptif())%>
           </td>
         </tr>
         <tr>
@@ -111,11 +117,13 @@
   		}
   	}
   	else {
-  		out.println("N'essayez pas de pirater le site. Votre adresse ip ("+ request.getRemoteAddr() + ") vient d'être envoyée à la police ! <br/>");
+  		%>
+  		<p class="erreur">N'essayez pas de pirater le site. Votre adresse ip (<%=request.getRemoteAddr()%>) vient d'être envoyée à la police !</p>
+  		<%
   	}
 	%>
-    <a href="index.jsp">Retour au menu</a>
-
+	
+	</div>
   </body>
   
 </html>

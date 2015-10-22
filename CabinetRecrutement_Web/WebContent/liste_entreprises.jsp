@@ -16,35 +16,38 @@
 
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Cabinet de recrutement : liste des entreprises référencées</title>
+    <title>Cabinet de recrutement</title>
     <link rel="stylesheet" href="styles.css" type="text/css" />
   </head>
 
   <body>
   
-		<h2>Liste des entreprises référencées :</h2>
-
-		<table id="affichage">
-		  <tr>
-		    <th>Identifiant</th>
-		    <th>Nom</th>
-		    <th>Adresse postale (ville)</th>
-		  </tr>
-		  <%
-		  for(Entreprise entreprise : entreprises)
-		  {
-		    %>
-		    <tr>
-		     <td>ENT_<%=entreprise.getId()%></td>
-		     <td><a href="infos_entreprise.jsp?id=<%=entreprise.getId()%>"><%=entreprise.getNom()%></a></td>
-		     <td><%=entreprise.getAdressePostale()%></td>
-		    </tr>
-		    <%
-		  }
-		  %>
-		</table>
-
-    <a href="index.jsp">Retour au menu</a>
+  		<%@include file="header.jsp" %>
+  		<div id="content">
+  		
+			<h2>Liste des entreprises référencées</h2>
+	
+			<table id="affichage">
+			  <tr>
+			    <th>Identifiant</th>
+			    <th>Nom</th>
+			    <th>Adresse postale (ville)</th>
+			  </tr>
+			  <%
+			  for(Entreprise entreprise : entreprises)
+			  {
+			    %>
+			    <tr>
+			     <td>ENT_<%=entreprise.getId()%></td>
+			     <td><a href="infos_entreprise.jsp?id=<%=entreprise.getId()%>"><%=entreprise.getNom()%></a></td>
+			     <td><%=((!entreprise.getAdressePostale().isEmpty())?entreprise.getAdressePostale():"[Non renseigné]")%></td>
+			    </tr>
+			    <%
+			  }
+			  %>
+			</table>
+		
+		</div>
 
   </body>
   
