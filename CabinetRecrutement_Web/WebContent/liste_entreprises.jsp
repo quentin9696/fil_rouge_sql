@@ -32,6 +32,7 @@
 			    <th>Identifiant</th>
 			    <th>Nom</th>
 			    <th>Adresse postale (ville)</th>
+			    <th>Nombre d'offres d'emploi déposées</th>
 			  </tr>
 			  <%
 			  for(Entreprise entreprise : entreprises)
@@ -41,6 +42,7 @@
 			     <td>ENT_<%=entreprise.getId()%></td>
 			     <td><a href="infos_entreprise.jsp?id=<%=entreprise.getId()%>"><%=entreprise.getNom()%></a></td>
 			     <td><%=((!entreprise.getAdressePostale().isEmpty())?entreprise.getAdressePostale():"[Non renseigné]")%></td>
+			     <td><%=((entreprise.getOffreEmplois() != null && entreprise.getOffreEmplois().size() > 0)?entreprise.getOffreEmplois().size():"-") %></td>
 			    </tr>
 			    <%
 			  }

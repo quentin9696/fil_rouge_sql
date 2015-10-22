@@ -16,5 +16,4 @@ public interface IServiceCandidat {
 	public List<Candidature> findAllCandidatures();
 	public Candidature findById(int id);
 	public List<Candidature> getCandidatAssocier(int idSecteur, int idNiveauQualif);
-	
 }

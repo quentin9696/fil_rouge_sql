@@ -52,4 +52,9 @@ public class ServiceEntreprise implements IServiceEntreprise
 		// TODO Auto-generated method stub
 		return entrepriseDAO.update(e);
 	}
+	@Override
+	public void removeEntreprise(Entreprise e) {
+		// TODO Auto-generated method stub
+		entrepriseDAO.remove(e);
+	}
 }

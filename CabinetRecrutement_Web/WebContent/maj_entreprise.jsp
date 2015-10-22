@@ -45,7 +45,7 @@
 			  		<tr>
 		          <th style="width: 170px;">ID :</th>
 			        <td>
-			          <input type="text" name="id" size="20" maxlength="50" value="<%=entreprise.getId()%>">
+			          <input type="text" name="id" size="20" maxlength="50" value="<%=entreprise.getId()%>" disabled="disabled">
 			        </td>
 			  	  </tr>
 			  	  <tr>

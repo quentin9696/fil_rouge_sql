@@ -30,7 +30,8 @@
   </head>
 
   <body>
-
+		<%@include file="header.jsp" %>
+  		<div id="content">
 		<%
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
@@ -139,7 +140,7 @@
 					        <tr>
 						          <th>Curriculum vitæ :</th>
 						          <td>
-						        	<%=c.getCv()%>    
+						        	<%=Utils.text2HTML(c.getCv())%>    
 						          </td>
 					        </tr>
 					        <tr>
@@ -199,10 +200,7 @@
 			out.println("Le nom et le prenom doivent être renseingé");
 		}
 		%>
-			
-		<a href="index.jsp">Retour au menu</a>
-		
-
+		</div>
   </body>
   
 </html>

@@ -22,6 +22,8 @@ IServiceSecteurActiviteRemote serviceSecteurActivite = (IServiceSecteurActiviteR
 
   <body>
   
+  <%@include file="header.jsp" %>
+  		<div id="content">
 	<h2>Référencer un nouveau candidat</h2>
     
     <form action="traitement_candidature.jsp" method="post">
@@ -98,8 +100,7 @@ IServiceSecteurActiviteRemote serviceSecteurActivite = (IServiceSecteurActiviteR
 		    <input type="submit" value="Enregistrer"/>
 		  </p>
 		</form>
-    <a href="index.jsp">Retour au menu</a>
-
+	</div>
   </body>
   
 </html>

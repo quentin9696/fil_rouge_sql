@@ -23,12 +23,15 @@
   </head>
 
   <body>
+  		<%@include file="header.jsp" %>
+  		<div id="content">
   		<%
   		if(listeCandidatures == null) {
   			out.println("Aucune candidature référencée");
   		}
   		else {
   		%>
+  		
 		<h2>Liste des candidatures référencées :</h2>
 
 		<table id="affichage">
@@ -71,8 +74,7 @@
 	<% 
 		}
   	%>
-    <a href="index.jsp">Retour au menu</a>
-
+    </div>
   </body>
   
 </html>

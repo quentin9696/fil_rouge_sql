@@ -22,7 +22,9 @@
     <link rel="stylesheet" href="styles.css" type="text/css" />
   </head>
 
-  <body>		 
+  <body>	
+  		<%@include file="header.jsp" %>
+  		<div id="content">	 
 		<%
 		if(request.getParameter("id").isEmpty()) {
 	  		out.println("La candidature doit être spécifiée <br/>");
@@ -107,7 +109,7 @@
 	        <td>
 	          <%
 	        	if(c.getCv() != null) {
-	        		out.println(c.getCv());
+	        		out.println(Utils.text2HTML(c.getCv()));
 	        	}
 	        	else {
 	        		%>[Aucun CV]<%
@@ -160,7 +162,7 @@
 	  		out.println("N'essayez pas de pirater le site. Votre adresse ip ("+ request.getRemoteAddr() + ") vient d'être envoyée à la police ! <br/>");
 	  	}
 	%>
-    <a href="index.jsp">Retour au menu</a>
+    </div>
   </body>
   
 </html>

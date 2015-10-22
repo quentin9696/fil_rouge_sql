@@ -32,4 +32,6 @@ public interface IServiceEntreprise
 	
 	public Entreprise modiferEntreprise(Entreprise e);
 	
+	public void removeEntreprise(Entreprise e);
+	
 }

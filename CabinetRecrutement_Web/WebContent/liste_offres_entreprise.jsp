@@ -49,7 +49,7 @@
 			  		List<OffreEmploi> listeOffre = serviceOffre.getOffreEmploisByEntreprise(e.getId());
 			  		if(listeOffre == null) {
 			  			%>
-			  			<p classe="erreur">Aucune offres d'emplois n'a été déposée !</p>
+			  			<p class="erreur">Aucune offres d'emplois n'a été déposée !</p>
 			  			<%
 			  			
 			  		}
@@ -96,13 +96,16 @@
 							   	Set<SecteurActivite> secteurs = offre.getSecteurActivites();
 							   	HashSet<Candidature> listePotentielle = new HashSet();
 							   	
+							   	
 							   	for(SecteurActivite s : secteurs) {
-							   		/*List<Candidature> listeCandidature = serviceCandidat.getCandidatAssocier(s.getId(), offre.getNiveauQualification().getId());
+							   		
+							   		int idSecteur = s.getId();
+							   		int idNivQualif = offre.getNiveauQualification().getId();
+							   		
+							   		/*List<Candidature> listeCandidature = serviceCandidat.getCandidatAssocier(idSecteur, idNivQualif);
 							   		
 							   		if(listeCandidature != null && listeCandidature.size() > 0) {
-							   			for(Candidature cand : listeCandidature) {
-								   			listePotentielle.add(cand);	
-								   		}	
+							   			listePotentielle.addAll(listeCandidature);	
 							   		}*/
 
 							   	}
