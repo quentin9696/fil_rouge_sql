@@ -85,7 +85,7 @@
 						           <a href="maj_offre.jsp?id=<%=offre.getId()%>"><img src="images/mise_a_jour.png" border="0" alt="Mise à jour de l'offre d'emploi"/></a><br/>
 						         </td>
 						         <td>
-						           <a href="efface_offre?id=<%=offre.getId()%>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette offre d\'emploi ?\n\nAttention, cette opération n\'est pas réversible !\n\n');"><img src="images/effacement.png" border="0" alt="Effacement de l'offre d'emploi" /></a><br/>
+						           <a href="efface_offre.jsp?id=<%=offre.getId()%>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette offre d\'emploi ?\n\nAttention, cette opération n\'est pas réversible !\n\n');"><img src="images/effacement.png" border="0" alt="Effacement de l'offre d'emploi" /></a><br/>
 						         </td>
 						         
 						       <td><%=offre.getEntreprise().getNom()%></td>

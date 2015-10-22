@@ -28,6 +28,9 @@ IServiceSecteurActiviteRemote serviceSecteurActivite = (IServiceSecteurActiviteR
   </head>
 
   <body>
+  
+  <%@include file="header.jsp" %>
+  <div id="content">
   <%
   	if(request.getParameter("id").isEmpty()) {
   		out.println("L'offre d'emploi doit être spécifiée <br/>");
@@ -43,6 +46,7 @@ IServiceSecteurActiviteRemote serviceSecteurActivite = (IServiceSecteurActiviteR
   %>
 		<h2>Mettre à jour les informations de l'offre d'emploi</h2>
 		
+		<form action="traitement_maj_offre_emploi.jsp" method="post">
 		<table id="affichage">
         <tr>
           <th style="width: 170px;">Id :</th>
@@ -77,8 +81,11 @@ IServiceSecteurActiviteRemote serviceSecteurActivite = (IServiceSecteurActiviteR
                 	List<NiveauQualification> listeNiveauQualif = serviceNiveauQualif.getNiveauQualif();
 	            	
                 	for(NiveauQualification niveau : listeNiveauQualif) {
-                		if(offre.getNiveauQualification().getId() == niveau.getId()) {
-                			out.println("<input type=\"radio\" name=\"niveau\" value=\""+ niveau.getId() + " checked=\"checked\" \">" + niveau.getIntitule() + "<br/>");
+                		
+                		int idCheck = offre.getNiveauQualification().getId();
+                		
+                		if(niveau.getId() == idCheck) {
+                			out.println("<input type=\"radio\" name=\"niveau\" value=\""+ niveau.getId() + "\" checked=\"checked\" \">" + niveau.getIntitule() + "<br/>");
                 		}
                 		else {
                 			out.println("<input type=\"radio\" name=\"niveau\" value=\""+ niveau.getId() + "\">" + niveau.getIntitule() + "<br/>");	
@@ -96,12 +103,11 @@ IServiceSecteurActiviteRemote serviceSecteurActivite = (IServiceSecteurActiviteR
                 	<%
 	                  	
 	                	List<SecteurActivite> listeSecteurActivite = serviceSecteurActivite.getSecteurActivite();
-	                	Set<SecteurActivite> listeSecteurOffre = offre.getSecteurActivites();
                 		
-                	
 	                	for(SecteurActivite secteur : listeSecteurActivite) {
-	                		if(listeSecteurActivite.contains(secteur)) {
-	                			out.println("<input type=\"checkbox\" name=\"secteur\" value=\""+ secteur.getId()  + " checked=\"checked\" \">" + secteur.getIntitule() + "<br/>");
+	                		if(serviceSecteurActivite.getSecteurActiviteById(secteur.getId()) != null) {
+	                			
+	                			out.println("<input type=\"checkbox\" name=\"secteur\" value=\""+ secteur.getId()  + "\" checked=\"checked\" \">" + secteur.getIntitule() + "<br/>");
 	                		}
 	                		else {
 	                			out.println("<input type=\"checkbox\" name=\"secteur\" value=\""+ secteur.getId()  + "\">" + secteur.getIntitule() + "<br/>");	
@@ -121,10 +127,12 @@ IServiceSecteurActiviteRemote serviceSecteurActivite = (IServiceSecteurActiviteR
   		}
   	}
   	else {
-  		out.println("N'essayez pas de pirater le site. Votre adresse ip ("+ request.getRemoteAddr() + ") vient d'être envoyée à la police ! <br/>");
+  		%>
+  		<p class="erreur">N'essayez pas de pirater le site. Votre adresse ip ("+ request.getRemoteAddr() + ") vient d'être envoyée à la police !</p>
+  		<%
   	}
 	%>
-    <a href="index.jsp">Retour au menu</a>
+    </div>
 
   </body>
   

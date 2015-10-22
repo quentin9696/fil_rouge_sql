@@ -38,18 +38,20 @@
 			    
 			  </tr>
 			  
-			      <tr>
+			      
 			       <%
 			       	for(OffreEmploi offre : listes) {
-			       		%> <td><%=offre.getId()%></td>
-			       		<td><a href="infos_offre_emplois.jsp?id=<%=offre.getId()%>"><%=offre.getTitre()%></a></td>
-			       		<td><%=offre.getEntreprise().getNom()%></td>
-			       		<td><%=offre.getNiveauQualification().getIntitule()%></td>
-			       		<td><%=Utils.date2String(offre.getDateDepot())%></td>
+			       		%> 
+			       		<tr>
+				       		<td><%=offre.getId()%></td>
+				       		<td><a href="infos_offre_emplois.jsp?id=<%=offre.getId()%>"><%=offre.getTitre()%></a></td>
+				       		<td><%=offre.getEntreprise().getNom()%></td>
+				       		<td><%=offre.getNiveauQualification().getIntitule()%></td>
+				       		<td><%=Utils.date2String(offre.getDateDepot())%></td>
+			       		<tr>
 			       	<%
 			       	}
-			       %>
-			      </tr>   
+			       %> 
 			</table>
 		</div>
 

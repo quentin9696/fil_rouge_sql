@@ -39,6 +39,21 @@ public class ServiceOffreEmplois implements IServiceOffreEmplois {
 		// TODO Auto-generated method stub
 		return offreEmploiDAO.findByEntreprise(id);
 	}
+	@Override
+	public OffreEmploi ajouterOffre(OffreEmploi offre) {
+		// TODO Auto-generated method stub
+		return offreEmploiDAO.persist(offre);
+	}
+	@Override
+	public OffreEmploi updateOffre(OffreEmploi offre) {
+		// TODO Auto-generated method stub
+		return offreEmploiDAO.update(offre);
+	}
+	@Override
+	public void removeOffre(OffreEmploi offre) {
+		// TODO Auto-generated method stub
+		offreEmploiDAO.remove(offre);
+	}
 	
 	
 

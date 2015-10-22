@@ -49,7 +49,7 @@ public class OffreEmploiDAO
 			  e.printStackTrace();
 		  }
 	  }
-	  return offreEmploi;
+	  return entityManager.merge(offreEmploi);
   }
   
   public OffreEmploi update(OffreEmploi offreEmploi) {

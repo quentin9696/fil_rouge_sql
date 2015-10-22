@@ -71,7 +71,7 @@
 		      <li class="menu"><a href="liste_offres_entreprise.jsp">Liste de mes offres d'emploi</a> (<%=((e.getOffreEmplois() != null) ? e.getOffreEmplois().size() : "0")%>)</li>
 			</ul>
         	<ul>
-          		<li style="list-style-image: url(images/effacement.png)" class="menu"><a href="supprimer_ent" onclick="return confirm('Êtes-vous sûr de vouloir retirer votre entreprise et toutes vos offres d\'emploi?\n\nAttention, cette opération n\'est pas réversible !\n\n');">Retirer mon entreprise et toutes mes offres d'emploi</a></li>
+          		<li style="list-style-image: url(images/effacement.png)" class="menu"><a href="supprimer_ent.jsp" onclick="return confirm('Êtes-vous sûr de vouloir retirer votre entreprise et toutes vos offres d\'emploi?\n\nAttention, cette opération n\'est pas réversible !\n\n');">Retirer mon entreprise et toutes mes offres d'emploi</a></li>
         	</ul>
     	<%
 	  		}

@@ -42,7 +42,7 @@ public class OffreEmploi implements Serializable {
 	private Set<MessageOffreDemploi> messageOffreDemplois;
 
 	//bi-directional many-to-one association to Entreprise
-	@ManyToOne
+	@ManyToOne(fetch = EAGER)
 	@JoinColumn(name="id_entreprise")
 	private Entreprise entreprise;
 

@@ -48,6 +48,8 @@
   	  	}
   	  	else if(utilisateur instanceof Entreprise) {
   	  		
+  	  		Entreprise e = (Entreprise) utilisateur;
+  	  		
   	  		String titre = request.getParameter("titre");
   	  		String desc = request.getParameter("desc");
   	  		String profil = request.getParameter("profil");
@@ -69,15 +71,112 @@
 			  		NiveauQualification niveau = serviceNiveauQualif.getNiveauQualificationById(id);
 			  		
 			  		if(niveau != null) {
-			  			OffreEmploi offre = new OffreEmploi();
 			  			
-			  			offre.setTitre(titre);
-			  			offre.setDescriptifMission(desc);
-			  			offre.setProfilRecherche(profil);
-			  			offre.setNiveauQualification(niveau);
-			  			
-			  			
+			  			try {
+				  			OffreEmploi offre = new OffreEmploi();
+				  			
+				  			offre.setEntreprise(e);
+				  			offre.setTitre(titre);
+				  			offre.setDescriptifMission(desc);
+				  			offre.setProfilRecherche(profil);
+				  			offre.setNiveauQualification(niveau);
+				  			offre.setDateDepot(new Timestamp(new Date().getTime()));
+				  			
+				  			offre = serviceOffre.ajouterOffre(offre);
+				  			
+				  			Set<SecteurActivite> listeSecteurActivite = offre.getSecteurActivites();
+				  			
+						    
+						    //Recupere la checkBox !
+				  			String[] checkboxes = request.getParameterValues("secteur");
+				  			
+				  			if (checkboxes != null && checkboxes.length > 0) {
+				  				
+				  				for(int i = 0; i<checkboxes.length; i++) {
+				  					
+				  					int secteurID = new Integer(checkboxes[i]);
+				  					
+				  					SecteurActivite s = serviceSecteurActivite.getSecteurActiviteById(secteurID);
+				  					
+				  					if( s != null) {
+				  						listeSecteurActivite.add(s);
+				  					}
+				  					else  {
+				  						out.println("<p class=\"erreur\">N'essayez pas de pirater le site. Votre adresse ip ("+ request.getRemoteAddr() 
+				  					  			+ "vient d'être envoyée à la police !</p>");
+				  						System.exit(-1);	
+				  					}
+				  				}
+				  					
+				  				offre.setSecteurActivites(listeSecteurActivite);
+				  				serviceOffre.updateOffre(offre);
+				  			%>	
+			  			<h2>Nouvelle offre d'emploi référencée :</h2>
+			  		      
+			  		      <table id="affichage">
+			  		        <tr>
+			  		          <th style="width: 170px">Numéro de l'offre :</th>
+			  		          <td>
+			  		            <%=offre.getId()%>
+			  		          </td>
+			  		        </tr>
+			  		        <tr>
+			  		          <th>Titre :</th>
+			  		          <td>
+			  		            <%=offre.getTitre()%>
+			  		          </td>
+			  		        </tr>
+			  		        <tr>
+			  		          <th>Descriptif de la mission :</th>
+			  		          <td>
+			  		            <%=Utils.text2HTML(offre.getDescriptifMission())%>
+			  		          </td>
+			  		        </tr>
+			  		        <tr>
+			  		          <th>Profil recherché :</th>
+			  		          <td>
+			  		            <%=offre.getProfilRecherche()%>
+			  		          </td>
+			  		        </tr>
+			  		        <tr>
+			  		          <th>Niveau de qualification :</th>
+			  		          <td>
+			  		            <%=offre.getNiveauQualification().getIntitule()%>
+			  		          </td>
+			  		        </tr>
+			  		        <tr>
+			  		          <th>Secteur(s) d'activité :</th>
+			  		          <td>
+			  		            <ul>
+									<%
+									for(SecteurActivite s : offre.getSecteurActivites()) {
+										%>
+										<li><%=s.getIntitule()%></li>
+										<%
+									}
+									%>
+			  		            </ul>
+			  		          </td>
+			  		        </tr>
+			  		        <tr>
+			  		          <th>Date de dépôt :</th>
+			  		          <td>
+			  		            <%=Utils.date2String(offre.getDateDepot())%>
+			  		          </td>
+			  		        </tr>
+			  		      </table>
+			  		      <%
+				  			}
+				  			else {
+				  				%>
+				  				<p class="erreur" >Erreur : vous devez selectionner au moins 1 secteur d'activité.</p>
+				  				<%
+				  			}
+				  			
 			  		}
+		  			catch(Exception exc) {
+		  				exc.printStackTrace();
+		  			}
 			  	}
 			  	else {
 			  		%>
@@ -85,9 +184,12 @@
 			  		<%
 			  	}
   	  		}
-  		%>
-  			
-  		<%
+		  	else {
+		  		%>
+		  		<p class="erreur" >N'essayer pas de pirater le site ! Votre IP (<%=request.getRemoteAddr()%>) a été envoyé à la police !</p>
+		  		<%
+		  	}
+  		}
   	  	}
   		%>
   		</div>
