@@ -13,4 +13,8 @@ public interface IServiceCandidat {
 
 	public Candidature addCandidat(Candidature c);
 	public Candidature updateCandidat(Candidature c);
+	public List<Candidature> findAllCandidatures();
+	public Candidature findById(int id);
+	public List<Candidature> getCandidatAssocier(int idSecteur, int idNiveauQualif);
+	
 }

@@ -1,3 +1,4 @@
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.front.utils.Utils"%>
 <%@page import="eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite"%>
 <%@page import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceNiveauQualificationRemote"%>
 <%@page import="eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification"%>
@@ -42,8 +43,11 @@
 			if(nom.matches("^.{1,50}$") && prenom.matches("^.{1,50}$")) {
 				if(dateNaissance != null && dateNaissance.matches("[0-9]{2}/[0-9]{2}/[0-9]{4}")) {
 
-					SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-				    Date parsedDate = dateFormat.parse(dateNaissance);
+					
+					//SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+				    //Date parsedDate = dateFormat.parse(dateNaissance);
+				    
+				    Date parsedDate = Utils.string2Date(dateNaissance);
 				    Timestamp dateNaissanceTimestamp = new Timestamp(parsedDate.getTime());
 				    
 				    if(request.getParameter("niveau") == null) {

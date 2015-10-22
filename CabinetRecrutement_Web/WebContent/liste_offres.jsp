@@ -1,3 +1,4 @@
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.front.utils.Utils"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <%@page import="eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator,
@@ -42,7 +43,7 @@
        		<td><a href="info_offre_emplois.jsp?id=<%=offre.getId()%>"><%=offre.getTitre()%></a></td>
        		<td><%=offre.getEntreprise().getNom()%></td>
        		<td><%=offre.getNiveauQualification().getIntitule()%></td>
-       		<td><%=offre.getDateDepot()%></td>
+       		<td><%=Utils.date2String(offre.getDateDepot())%></td>
        	<%
        	}
        %>

@@ -40,4 +40,23 @@ public class ServiceCandidat implements IServiceCandidat {
 		return candidatureDAO.update(c);
 	}
 
+	@Override
+	public List<Candidature> findAllCandidatures() {
+		// TODO Auto-generated method stub
+		return candidatureDAO.findAll();
+	}
+
+	@Override
+	public Candidature findById(int id) {
+		// TODO Auto-generated method stub
+		return candidatureDAO.findById(id);
+	}
+
+	@Override
+	public List<Candidature> getCandidatAssocier(int idSecteur,
+			int idNiveauQualif) {
+		// TODO Auto-generated method stub
+		return candidatureDAO.findBySecteurActiviteAndNiveauQualification(idSecteur, idNiveauQualif);
+	}
+
 }

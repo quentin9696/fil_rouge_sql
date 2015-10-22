@@ -1,3 +1,4 @@
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.front.utils.Utils"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite"%>
@@ -18,7 +19,7 @@
 
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Cabinet de recrutement : liste des entreprises référencées</title>
+    <title>Cabinet de recrutement : Information sur une offre d'emploi référencée</title>
     <link rel="stylesheet" href="styles.css" type="text/css" />
   </head>
 
@@ -102,7 +103,7 @@
         <tr>
           <th>Date de dépôt :</th>
           <td>
-          	<%=offre.getDateDepot()%>
+          	<%=Utils.date2String(offre.getDateDepot())%>
           </td>
         </tr>
       </table>
