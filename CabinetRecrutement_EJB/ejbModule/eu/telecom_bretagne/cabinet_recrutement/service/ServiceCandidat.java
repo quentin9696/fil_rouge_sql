@@ -59,4 +59,10 @@ public class ServiceCandidat implements IServiceCandidat {
 		return candidatureDAO.findBySecteurActiviteAndNiveauQualification(idSecteur, idNiveauQualif);
 	}
 
+	@Override
+	public void removeCandidat(Candidature c) {
+		// TODO Auto-generated method stub
+		candidatureDAO.remove(c);
+	}
+
 }

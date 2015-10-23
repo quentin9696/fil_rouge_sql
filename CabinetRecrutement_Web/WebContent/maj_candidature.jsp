@@ -53,7 +53,7 @@
 			  		<tr>
 			          <th style="width: 170px">ID :</th>
 				        <td>
-				          <input type="text" name="nom" size="20" maxlength="50" value="<%=candidat.getId()%>" disabled="disabled">
+				          <input type="text" name="id" size="20" maxlength="50" value="<%=candidat.getId()%>" readonly="readonly">
 				        </td>
 				  	  </tr>
 			        <tr>
