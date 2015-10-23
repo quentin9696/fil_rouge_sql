@@ -56,6 +56,8 @@
 				entreprise.setId(e.getId());
 				
 				Entreprise nouvelleEntreprise = serviceEntreprise.modiferEntreprise(entreprise);
+				
+				session.setAttribute("utilisateur", nouvelleEntreprise);
 				%>
 					<h2>Entreprise mise à jour</h2>
 					

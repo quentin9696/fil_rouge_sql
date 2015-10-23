@@ -56,7 +56,7 @@ public class Candidature implements Serializable {
 	private Set<MessageOffreDemploi> messageOffreDemplois;
 
 	//bi-directional many-to-many association to SecteurActivite
-	@ManyToMany(mappedBy="candidatures", fetch = EAGER)
+	@ManyToMany(fetch = EAGER, mappedBy = "candidatures")
 	private Set<SecteurActivite> secteurActivites;
 
 	public Candidature() {

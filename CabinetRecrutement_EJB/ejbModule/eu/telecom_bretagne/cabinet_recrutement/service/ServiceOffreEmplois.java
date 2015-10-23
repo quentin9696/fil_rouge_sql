@@ -54,6 +54,12 @@ public class ServiceOffreEmplois implements IServiceOffreEmplois {
 		// TODO Auto-generated method stub
 		offreEmploiDAO.remove(offre);
 	}
+	@Override
+	public List<OffreEmploi> findBySecteurAndNiveauQualification(int idSecteur,
+			int idNiveauQualification) {
+		// TODO Auto-generated method stub
+		return offreEmploiDAO.findBySecteurActiviteAndNiveauQualification(idSecteur, idNiveauQualification);
+	}
 	
 	
 

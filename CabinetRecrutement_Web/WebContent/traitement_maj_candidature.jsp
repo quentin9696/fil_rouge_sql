@@ -98,6 +98,7 @@ IServiceSecteurActiviteRemote serviceSecteurActivite = (IServiceSecteurActiviteR
 							    
 							    Set<SecteurActivite> listeSecteurActivite = candidat.getSecteurActivites();
 					  			
+							    listeSecteurActivite.clear();
 							    
 							    //Recupere la checkBox !
 					  			String[] checkboxes = request.getParameterValues("secteur");
@@ -123,6 +124,7 @@ IServiceSecteurActiviteRemote serviceSecteurActivite = (IServiceSecteurActiviteR
 					  				
 					  				c = serviceCandidat.updateCandidat(candidat);
 					  				
+					  				session.setAttribute("utilisateur",c);
 					  				%>
 					  				
 					  				<h2>Nouvelle candidature référencée :</h2>

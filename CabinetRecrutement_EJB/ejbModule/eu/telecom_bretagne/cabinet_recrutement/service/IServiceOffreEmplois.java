@@ -15,4 +15,6 @@ public interface IServiceOffreEmplois {
 	public OffreEmploi ajouterOffre(OffreEmploi offre);
 	public OffreEmploi updateOffre(OffreEmploi offre);
 	public void removeOffre(OffreEmploi offre);
+	public List<OffreEmploi> findBySecteurAndNiveauQualification(int idSecteur, int idNiveauQualification);
+	
 }
