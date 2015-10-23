@@ -1,3 +1,4 @@
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceCandidat"%>
 <%@page import="eu.telecom_bretagne.cabinet_recrutement.front.utils.Utils"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.LinkedList"%>
@@ -45,8 +46,108 @@
   %>
 		<h2>Infos offre d'emploi :</h2>
     
-    
-    
+    	<% 
+    		if(utilisateur != null) {
+    			if(utilisateur instanceof Candidature) {
+    				
+    				Candidature c = (Candidature) utilisateur;
+    				
+    				Set<SecteurActivite> secteursActivite = offre.getSecteurActivites();
+    				
+    				int idNiveauQualifCand = c.getNiveauQualification().getId();
+    				int idNiveauQualifOffre = offre.getNiveauQualification().getId();
+    				
+    				if(idNiveauQualifCand == idNiveauQualifOffre) {
+    					
+    					boolean find = false;
+    					
+    					for(SecteurActivite s : offre.getSecteurActivites()) {
+    						int idS = s.getId();
+    						for(SecteurActivite sCand : c.getSecteurActivites()) {
+    							int idSCand = sCand.getId();
+    							
+    							if(idSCand == idS) {
+    								find = true;
+    							}
+    						}
+    					}
+    					
+    					if(find) {
+    						%>
+    						<p class="erreur">Intéressé par cette offre d'emploi ? <a href="">Demande d'entretien</a></p>
+    						<%
+    					}
+    				}
+    				
+    			}
+    			else if(utilisateur instanceof Entreprise) {
+    				 Entreprise e = (Entreprise) utilisateur;
+						
+    				 int idEnt = e.getId();
+    				 int idEntOffre =  offre.getEntreprise().getId();
+    				 
+    				 if(idEnt == idEntOffre) {
+    					
+	    				 IServiceCandidat serviceCandidat = (IServiceCandidat) ServicesLocator.getInstance().getRemoteInterface("ServiceCandidat");
+
+	    				 int idNiveauQualifOffre = offre.getNiveauQualification().getId();
+	    				 Set<SecteurActivite> secteursActivite = offre.getSecteurActivites();
+	    				 
+	    				 LinkedList<Candidature> listePotentielle = new LinkedList<Candidature>();
+	    				 
+	    				 for(SecteurActivite s : secteursActivite) {
+	    					 
+	    					 int idSecteurActiviteCourrant = s.getId();
+	    					 listePotentielle.addAll(serviceCandidat.getCandidatAssocier(idSecteurActiviteCourrant, idNiveauQualifOffre));
+	    				 }
+	    				 
+	    				 if(listePotentielle.size() > 0) {
+	    					 LinkedList<Integer> idCand = new LinkedList<Integer>();
+	    					 
+	    					 for(Candidature candidatureCourrante : listePotentielle) {
+	    						 int idCandidatureCourrante = candidatureCourrante.getId();
+	    						 
+	    						 if(idCand.size() < 1) {
+	    							 idCand.add(idCandidatureCourrante);
+	    						 }
+	    						 else {
+	    							 boolean find = false;
+	    							 
+	    							 for(int i : idCand) {
+	    								 if(i == idCandidatureCourrante) {
+	    									 find = true;
+	    								 }
+	    							 }
+	    							 
+	    							 if(!find) {
+	    								 idCand.add(idCandidatureCourrante);
+	    							 }
+	    						 }
+	    					 }
+	    					 
+	    					 listePotentielle.clear();
+	    					 
+	    					 for(int i : idCand) {
+	    						listePotentielle.add(serviceCandidat.findById(i));	 
+	    					 }
+	    					 
+	    					 %>
+	    					 <p class="erreur">Liste des candidatures potentiellement intéressées par l'offre : </p>
+	    					 <ul>
+	    					 	<%
+	    					 		for(Candidature c : listePotentielle) {
+	    					 			%>
+	    					 			<li><%=c.getNom()%> <%=c.getPrenom()%> - <a href="">Envoyer une proposition de rendez-vous</a></li>
+	    					 			<%
+	    					 		}
+	    					 	%>
+	    					 </ul>
+	    					 <%
+	    				 }
+	    			}
+    			}
+    		}
+    	%>
     
       <table id="affichage">
         <tr>

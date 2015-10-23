@@ -5,14 +5,12 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="CabinetRecrutement_EJB">
 		<jta-data-source>jdbc/cabinet_recrutement_bd</jta-data-source>
-		<class>eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature</class>
 		<class>eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise</class>
 		<class>eu.telecom_bretagne.cabinet_recrutement.data.model.MessageCandidature</class>
 		<class>eu.telecom_bretagne.cabinet_recrutement.data.model.MessageOffreDemploi</class>
 		<class>eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification</class>
-		<class>eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi</class>
 		<class>eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite</class>
-		<class>eu.telecom_bretagne.cabinet_recrutement.data.model.MessageCandidaturePK</class>
-		<class>eu.telecom_bretagne.cabinet_recrutement.data.model.MessageOffreDemploiPK</class>
+		<class>eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi</class>
+		<class>eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature</class>
 	</persistence-unit>
 </persistence>

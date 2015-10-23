@@ -80,12 +80,18 @@
   	  					}
   	  				}
   	  				
-  	  				if(find) {
+  	  				if(!find) {
   	  					idOffres.add(idOffreCourrante);
-  	  					listes.remove(j);
   	  				}
   				}
   				j++;
+  			}
+  			
+  			LinkedList<OffreEmploi> listeOffres = new LinkedList<OffreEmploi>();
+  			
+  			for(int i : idOffres) {
+  				listeOffres.add(serviceOffre.getOffreEmploisById(i));
+  				
   			}
   			
   		// Appel de la fonctionnalité désirée auprès du service
@@ -115,7 +121,7 @@
 			       <%
 			      
 			    	   
-			       	for(OffreEmploi offre : listes) {
+			       	for(OffreEmploi offre : listeOffres) {
 			       		%> 
 			       		<tr>
 				       		<td><%=offre.getId()%></td>

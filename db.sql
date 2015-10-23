@@ -90,20 +90,20 @@ create table secteur_activite_candidature
 
 create table message_offre_demploi
 (
+  id 		serial primary key,
   id_candidature integer references candidature not null,
   id_offre_emploi integer references offre_emploi not null,
   date_emploi timestamp,
-  corps_message text,
-  primary key(id_candidature, id_offre_emploi)  
+  corps_message text
 );
 
 create table message_candidature
 (
+  id 		serial primary key,
   id_candidature integer references candidature not null,
   id_offre_emploi integer references offre_emploi not null,
   date_envoi timestamp,
-  corps_message text,
-  primary key(id_candidature, id_offre_emploi)
+  corps_message text
 );
 -- +----------------------------------------------------------------------------------------------+
 -- | Insertion de quelques données de pour les tests                                              |

@@ -117,36 +117,43 @@
 							   		%>-<%
 							   	}
 							   	else {
-							   		/*LinkedList <Integer> idOffres = new LinkedList<Integer>();
+							   		LinkedList <Integer> idCand = new LinkedList<Integer>();
 						  			
 						  			int j=0;
 						  			
-						  			for(Candidature offreCourrante : listePotentielle) {
+						  			for(Candidature candidatCourrant : listePotentielle) {
 						  					
-						  				int idOffreCourrante = offreCourrante.getId();
+						  				int idCandCourrante = candidatCourrant.getId();
 						  				
 						  				boolean find = false;
-						  				if(idOffres.size() < 1) {
-						  					idOffres.add(idOffreCourrante);
+						  				
+						  				if(idCand.size() < 1) {
+						  					idCand.add(idCandCourrante);
 						  				}
 						  				else {
-						  					for(int i : idOffres) {
-						  	  					if(i == idOffreCourrante) {
+						  					for(int i : idCand) {
+						  	  					if(i == idCandCourrante) {
 						  	  						find = true;
 						  	  					}
 						  	  				}
 						  	  				
-						  	  				if(find) {
-						  	  					idOffres.add(idOffreCourrante);
-						  	  					listePotentielle.remove(j);
+						  	  				if(!find) {
+						  	  					idCand.add(idCandCourrante);
 						  	  				}
 						  				}
 						  				j++;
-						  			}*/
+						  			}
+						  			
+						  			LinkedList<Candidature> listeCandidats = new LinkedList<Candidature>();
+						  			
+						  			for(int i : idCand) {
+						  				listeCandidats.add(serviceCandidat.findById(i));
+						  				
+						  			}
 							   		%>
 							   		<ul>
 							   		<%
-							   		for(Candidature c : listePotentielle) {
+							   		for(Candidature c : listeCandidats) {
 							   			%>
 							   			<li><a href="infos_candidature.jsp?id=<%=c.getId()%>"><%=c.getNom()%> <%=c.getPrenom()%></a></li>
 							   			<%

@@ -1,3 +1,6 @@
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite"%>
+<%@page import="java.util.Set"%>
+<%@page import="java.util.LinkedList"%>
 <%@page import="eu.telecom_bretagne.cabinet_recrutement.front.utils.Utils"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 

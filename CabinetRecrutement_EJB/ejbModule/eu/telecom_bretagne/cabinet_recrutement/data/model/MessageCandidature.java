@@ -15,8 +15,10 @@ import java.sql.Timestamp;
 public class MessageCandidature implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private MessageCandidaturePK id;
+	@Id
+	@SequenceGenerator(name="MESSAGE_CANDIDATURE_ID_GENERATOR", sequenceName="MESSAGE_CANDIDATURE_ID_SEQ")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MESSAGE_CANDIDATURE_ID_GENERATOR")
+	private Integer id;
 
 	@Column(name="corps_message")
 	private String corpsMessage;
@@ -37,11 +39,11 @@ public class MessageCandidature implements Serializable {
 	public MessageCandidature() {
 	}
 
-	public MessageCandidaturePK getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(MessageCandidaturePK id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
