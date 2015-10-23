@@ -56,7 +56,7 @@ public class MessageOffreDemploiDAO
 			  e.printStackTrace();
 		  }
 	  }
-	  return messageOffreDemploi;
+	  return entityManager.merge(messageOffreDemploi);
   }
   
   public MessageOffreDemploi update(MessageOffreDemploi messageOffreDemploi) {

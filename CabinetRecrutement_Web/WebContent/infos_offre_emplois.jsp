@@ -74,7 +74,7 @@
     					
     					if(find) {
     						%>
-    						<p class="erreur">Intéressé par cette offre d'emploi ? <a href="">Demande d'entretien</a></p>
+    						<p class="erreur">Intéressé par cette offre d'emploi ? <a href="message_envois_offre.jsp?id_offre=<%=offre.getId()%>">Demande d'entretien</a></p>
     						<%
     					}
     				}
