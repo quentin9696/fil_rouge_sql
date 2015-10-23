@@ -51,7 +51,7 @@ IServiceSecteurActiviteRemote serviceSecteurActivite = (IServiceSecteurActiviteR
         <tr>
           <th style="width: 170px;">Id :</th>
           <td>
-            <input type="text" size="20" value="<%=offre.getId()%>" disabled="disabled">
+            <input type="text" size="20" name="id" value="<%=offre.getId()%>" readonly="readonly">
           </td>
         </tr>
 	  	  <tr>
@@ -105,9 +105,18 @@ IServiceSecteurActiviteRemote serviceSecteurActivite = (IServiceSecteurActiviteR
 	                	List<SecteurActivite> listeSecteurActivite = serviceSecteurActivite.getSecteurActivite();
                 		
 	                	for(SecteurActivite secteur : listeSecteurActivite) {
-	                		if(serviceSecteurActivite.getSecteurActiviteById(secteur.getId()) != null) {
-	                			
-	                			out.println("<input type=\"checkbox\" name=\"secteur\" value=\""+ secteur.getId()  + "\" checked=\"checked\" \">" + secteur.getIntitule() + "<br/>");
+	                		
+	                		boolean find = false;
+	                		int idSecteur = secteur.getId();
+	                		for(SecteurActivite secteurCandidature : offre.getSecteurActivites()) {
+	                			int idSecteurCandidature = secteurCandidature.getId();
+	                			if(idSecteur == idSecteurCandidature) {
+	                				find = true;
+	                			}
+	                		}
+	                		
+	                		if(find) {
+	                			out.println("<input type=\"checkbox\" name=\"secteur\" value=\""+ secteur.getId()  + "\" checked=\"checked\" >" + secteur.getIntitule() + "<br/>");
 	                		}
 	                		else {
 	                			out.println("<input type=\"checkbox\" name=\"secteur\" value=\""+ secteur.getId()  + "\">" + secteur.getIntitule() + "<br/>");	

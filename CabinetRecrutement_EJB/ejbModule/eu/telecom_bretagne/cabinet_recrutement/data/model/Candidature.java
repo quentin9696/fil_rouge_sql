@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Set;
+
 import static javax.persistence.FetchType.EAGER;
 
 
@@ -56,7 +57,17 @@ public class Candidature implements Serializable {
 	private Set<MessageOffreDemploi> messageOffreDemplois;
 
 	//bi-directional many-to-many association to SecteurActivite
-	@ManyToMany(fetch = EAGER, mappedBy = "candidatures")
+	
+	@ManyToMany(fetch = EAGER)
+	@JoinTable(
+		name="secteur_activite_candidature"
+		, joinColumns={
+			@JoinColumn(name="id_candidature")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="id_secteur_activite")
+			}
+		)
 	private Set<SecteurActivite> secteurActivites;
 
 	public Candidature() {

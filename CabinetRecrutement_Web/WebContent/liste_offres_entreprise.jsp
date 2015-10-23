@@ -98,7 +98,7 @@
 							   	
 							   	int idNivQualif = offre.getNiveauQualification().getId();
 							   	
-							   	HashSet<Candidature> listePotentielle = new HashSet<Candidature>();
+							   	LinkedList<Candidature> listePotentielle = new LinkedList<Candidature>();
 							   	
 							   	for(SecteurActivite s : secteurs) {
 							   		
@@ -109,10 +109,40 @@
 							   		
 							   	}
 							   	
+								
+					  			
+					  			
+							   	
 							   	if(listePotentielle.size()<1) {
 							   		%>-<%
 							   	}
 							   	else {
+							   		/*LinkedList <Integer> idOffres = new LinkedList<Integer>();
+						  			
+						  			int j=0;
+						  			
+						  			for(Candidature offreCourrante : listePotentielle) {
+						  					
+						  				int idOffreCourrante = offreCourrante.getId();
+						  				
+						  				boolean find = false;
+						  				if(idOffres.size() < 1) {
+						  					idOffres.add(idOffreCourrante);
+						  				}
+						  				else {
+						  					for(int i : idOffres) {
+						  	  					if(i == idOffreCourrante) {
+						  	  						find = true;
+						  	  					}
+						  	  				}
+						  	  				
+						  	  				if(find) {
+						  	  					idOffres.add(idOffreCourrante);
+						  	  					listePotentielle.remove(j);
+						  	  				}
+						  				}
+						  				j++;
+						  			}*/
 							   		%>
 							   		<ul>
 							   		<%

@@ -58,7 +58,7 @@
 			  			else {
 			  				serviceOffre.removeOffre(offre);
 			  				%>
-			  				<p>L'offre vient d'être supprimée et rentiré du site.</p>
+			  				<p>L'offre vient d'être supprimée et retiré du site.</p>
 			  				<%
 			  			}
 			  		}

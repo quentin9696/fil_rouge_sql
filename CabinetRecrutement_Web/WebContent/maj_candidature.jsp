@@ -121,14 +121,26 @@
 			        <tr>
 			          <th>Secteur(s) d'activité :</th>
 			          <td>
-			            <table id="tab_interne">
-			                	<%
+			                   	<%
 			                	// FAIRE ICI + TRAITEMENT !! 
-				                  	int j = 0;
 				                	List<SecteurActivite> listeSecteurActivite = serviceSecteurActivite.getSecteurActivite();
 				                	for(SecteurActivite secteur : listeSecteurActivite) {
+				                		boolean find = false;
+				                		int idSecteur = secteur.getId();
+				                		for(SecteurActivite secteurCandidature : candidat.getSecteurActivites()) {
+				                			int idSecteurCandidature = secteurCandidature.getId();
+				                			if(idSecteur == idSecteurCandidature) {
+				                				find = true;
+				                			}
+				                		}
 				                		
-				                		out.println("<input type=\"checkbox\" name=\"secteur\" value=\""+ secteur.getId()  + "\">" + secteur.getIntitule() + "<br/>");
+				                		if(find) {
+				                			out.println("<input type=\"checkbox\" name=\"secteur\" value=\""+ secteur.getId()  + "\" checked=\"checked\" >" + secteur.getIntitule() + "<br/>");
+				                		}
+				                		else {
+				                			out.println("<input type=\"checkbox\" name=\"secteur\" value=\""+ secteur.getId()  + "\">" + secteur.getIntitule() + "<br/>");	
+				                		}
+				                		
 				                	}
 			                	%>
 			            </table>

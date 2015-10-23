@@ -1,3 +1,4 @@
+<%@page import="java.util.LinkedList"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Set"%>
 <%@page import="eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite"%>
@@ -51,7 +52,7 @@
   			List<OffreEmploi> listeTouteOffres = serviceOffre.getOffreEmplois();
   			int idNiveauQualificationCandidat = c.getNiveauQualification().getId();
   			
-  			HashSet<OffreEmploi> listes = new HashSet<OffreEmploi>();
+  			LinkedList<OffreEmploi> listes = new LinkedList<OffreEmploi>();
   			
   			//out.println("niveau : " + idNiveauQualificationCandidat);
   			for(SecteurActivite secteur : listeSecteurActivite){
@@ -59,6 +60,34 @@
   				//out.println("secteur : " + idSecteur);
   				listes.addAll(serviceOffre.findBySecteurAndNiveauQualification(idSecteur, idNiveauQualificationCandidat));
   			}
+  			
+  			LinkedList <Integer> idOffres = new LinkedList<Integer>();
+  			
+  			int j=0;
+  			
+  			for(OffreEmploi offreCourrante : listes) {
+  					
+  				int idOffreCourrante = offreCourrante.getId();
+  				
+  				boolean find = false;
+  				if(idOffres.size() < 1) {
+  					idOffres.add(idOffreCourrante);
+  				}
+  				else {
+  					for(int i : idOffres) {
+  	  					if(i == idOffreCourrante) {
+  	  						find = true;
+  	  					}
+  	  				}
+  	  				
+  	  				if(find) {
+  	  					idOffres.add(idOffreCourrante);
+  	  					listes.remove(j);
+  	  				}
+  				}
+  				j++;
+  			}
+  			
   		// Appel de la fonctionnalité désirée auprès du service
   		
   		%>

@@ -87,7 +87,7 @@
     	<h2>Menu candidature</h2>
         <ul>
           <li class="menu"><a href="maj_candidature.jsp">Mettre à jour les informations de la candidature</a></li>
-	        <li class="menu"><a href="liste_offres_candidature.jsp">Lister les offres d'emploi qui correspondent à ma candidature</a> (<%=((1==1)?"0":"0")%>)</li>
+	        <li class="menu"><a href="liste_offres_candidature.jsp">Lister les offres d'emploi qui correspondent à ma candidature</a></li>
         </ul>
         <ul>
 	        <li style="list-style-image: url(images/effacement.png)" class="menu"><a href="effacer_cand.jsp" onclick="return confirm('Êtes-vous sûr de vouloir retirer votre candidature ?\n\nAttention, cette opération n\'est pas réversible !\n\n');">Retirer ma candidature</a></li>

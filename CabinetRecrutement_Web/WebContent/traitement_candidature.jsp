@@ -100,7 +100,7 @@
 				  				candidat.setSecteurActivites(listeSecteurActivite);
 				  				
 				  				Candidature c = serviceCandidat.updateCandidat(candidat);
-				  				
+				  				//Candidature c = candidat;
 				  				%>
 				  				
 				  				<h2>Nouvelle candidature référencée :</h2>

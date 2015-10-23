@@ -27,16 +27,7 @@ public class SecteurActivite implements Serializable {
 	private Set<OffreEmploi> offreEmplois;
 
 	//bi-directional many-to-many association to Candidature
-	@ManyToMany
-	@JoinTable(
-		name="secteur_activite_candidature"
-		, joinColumns={
-			@JoinColumn(name="id_secteur_activite")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="id_candidature")
-			}
-		)
+	@ManyToMany(mappedBy="secteurActivites")
 	private Set<Candidature> candidatures;
 
 	public SecteurActivite() {
