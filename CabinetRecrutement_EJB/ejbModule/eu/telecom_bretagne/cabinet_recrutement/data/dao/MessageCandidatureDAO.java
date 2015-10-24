@@ -41,7 +41,7 @@ public class MessageCandidatureDAO
 	//----------------------------------------------------------------------------
   public List<MessageCandidature> findAll()
 	{
-		Query query = entityManager.createQuery("select entreprise from Entreprise entreprise order by entreprise.id");
+		Query query = entityManager.createQuery("select message from MessageCandidature message order by message.id");
 		List l = query.getResultList();
 
 		return (List<MessageCandidature>) l;
@@ -56,14 +56,14 @@ public class MessageCandidatureDAO
 			  e.printStackTrace();
 		  }
 	  }
-	  return messageCandidature;
+	  return entityManager.merge(messageCandidature);
   }
   
   public MessageCandidature update(MessageCandidature messageCandidature) {
 	  
 	  if(messageCandidature != null) {
 		  try {
-			  entityManager.merge(messageCandidature);
+			  messageCandidature = entityManager.merge(messageCandidature);
 		  }
 		  catch (Exception e) {
 			  e.printStackTrace();

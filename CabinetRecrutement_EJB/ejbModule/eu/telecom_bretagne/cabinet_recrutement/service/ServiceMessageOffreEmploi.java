@@ -1,5 +1,7 @@
 package eu.telecom_bretagne.cabinet_recrutement.service;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -26,6 +28,16 @@ public class ServiceMessageOffreEmploi implements IServiceMessageOffreEmploi {
 	public MessageOffreDemploi ajouterMessage(MessageOffreDemploi message) {
 		// TODO Auto-generated method stub
 		return messageOffreDemploiDAO.persist(message);
+	}
+	@Override
+	public List<MessageOffreDemploi> getAll() {
+		// TODO Auto-generated method stub
+		return messageOffreDemploiDAO.findAll();
+	}
+	@Override
+	public void remove(MessageOffreDemploi message) {
+		// TODO Auto-generated method stub
+		messageOffreDemploiDAO.remove(message);
 	}
 
 }
