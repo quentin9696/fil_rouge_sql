@@ -137,7 +137,7 @@
 	    					 	<%
 	    					 		for(Candidature c : listePotentielle) {
 	    					 			%>
-	    					 			<li><%=c.getNom()%> <%=c.getPrenom()%> - <a href="">Envoyer une proposition de rendez-vous</a></li>
+	    					 			<li><%=c.getNom()%> <%=c.getPrenom()%> - <a href="message_envois_candidat.jsp?id_offre=<%=offre.getId()%>&id_cand=<%=c.getId()%>">Envoyer une proposition de rendez-vous</a></li>
 	    					 			<%
 	    					 		}
 	    					 	%>

@@ -1,3 +1,8 @@
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.data.model.MessageCandidature"%>
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceMessageCandidature"%>
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.data.model.MessageOffreDemploi"%>
+<%@page import="java.util.List"%>
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceMessageOffreEmploi"%>
 <%@page import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceOffreEmplois"%>
 <%@page import="eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
@@ -56,7 +61,38 @@
 			  				<%
 			  			}
 			  			else {
-			  				serviceOffre.removeOffre(offre);
+			  				
+			  				int idOffre = offre.getId();
+			  				
+			  				
+							IServiceMessageOffreEmploi serviceMessageOffre = (IServiceMessageOffreEmploi) ServicesLocator.getInstance().getRemoteInterface("ServiceMessageOffreEmploi");
+			  				List<MessageOffreDemploi> listeMessages = serviceMessageOffre.getAll();
+			  				
+			  				for(MessageOffreDemploi message : listeMessages) {
+			  					
+			  					int idOffreMessage = message.getOffreEmploi().getId();
+			  					
+			  					if(idOffre == idOffreMessage) {
+			  						
+			  						serviceMessageOffre.remove(message);
+			  						
+			  					}
+			  				}
+			  				
+			  				IServiceMessageCandidature serviceMessageCandidature = (IServiceMessageCandidature) ServicesLocator.getInstance().getRemoteInterface("ServiceMessageCandidature");
+			  				List<MessageCandidature> listeMessagesCand = serviceMessageCandidature.getAll();
+			  				
+			  				for(MessageCandidature message : listeMessagesCand) {
+			  					
+			  					int idOffreMessage = message.getOffreEmploi().getId();
+			  					
+			  					if(idOffre == idOffreMessage) {
+			  						
+			  						serviceMessageCandidature.remove(message);
+			  						
+			  					}
+			  				}
+			  				serviceOffre.removeOffre(offre);			  				
 			  				%>
 			  				<p>L'offre vient d'être supprimée et retiré du site.</p>
 			  				<%

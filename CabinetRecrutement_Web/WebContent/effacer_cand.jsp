@@ -1,3 +1,8 @@
+<%@page import="com.sun.faces.facelets.impl.IdMapper"%>
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.data.model.MessageCandidature"%>
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceMessageCandidature"%>
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.data.model.MessageOffreDemploi"%>
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceMessageOffreEmploi"%>
 <%@page import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceCandidat"%>
 <%@page import="java.util.List"%>
 <%@page import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceOffreEmplois"%>
@@ -36,12 +41,43 @@
 			
 				Candidature c  = (Candidature) utilisateur;
 			  		
+				int idCand = c.getId();
+				
 				IServiceCandidat serviceCandidat = (IServiceCandidat) ServicesLocator.getInstance().getRemoteInterface("ServiceCandidat");
 			  		
-			  		serviceCandidat.removeCandidat(c);
-			  		response.sendRedirect("deconnexion.jsp");
-			  		
-			  	}
+				IServiceMessageOffreEmploi serviceMessageOffre = (IServiceMessageOffreEmploi) ServicesLocator.getInstance().getRemoteInterface("ServiceMessageOffreEmploi");
+  				List<MessageOffreDemploi> listeMessages = serviceMessageOffre.getAll();
+  				
+  				for(MessageOffreDemploi message : listeMessages) {
+  					
+  					int idCandMessage = message.getCandidature().getId();
+  					
+  					if(idCand == idCandMessage) {
+  						
+  						serviceMessageOffre.remove(message);
+  						
+  					}
+  				}
+  				
+  				IServiceMessageCandidature serviceMessageCandidature = (IServiceMessageCandidature) ServicesLocator.getInstance().getRemoteInterface("ServiceMessageCandidature");
+  				List<MessageCandidature> listeMessagesCand = serviceMessageCandidature.getAll();
+  				
+  				for(MessageCandidature message : listeMessagesCand) {
+  					
+  					int idCandMessage = message.getCandidature().getId();
+  					
+  					if(idCand == idCandMessage) {
+  						
+  						serviceMessageCandidature.remove(message);
+  						
+  					}
+  				}
+					
+				
+		  		serviceCandidat.removeCandidat(c);
+		  		response.sendRedirect("deconnexion.jsp");
+		  		
+		  	}
 		%>
 		</div>
   </body>
