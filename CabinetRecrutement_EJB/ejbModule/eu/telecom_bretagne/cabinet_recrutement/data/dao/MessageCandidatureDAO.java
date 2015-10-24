@@ -41,7 +41,7 @@ public class MessageCandidatureDAO
 	//----------------------------------------------------------------------------
   public List<MessageCandidature> findAll()
 	{
-		Query query = entityManager.createQuery("select message from MessageCandidature message order by message.id");
+		Query query = entityManager.createQuery("select message from MessageCandidature message order by message.id DESC");
 		List l = query.getResultList();
 
 		return (List<MessageCandidature>) l;
