@@ -16,17 +16,6 @@
 
 	
 %>
-
-<html>
-
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Cabinet de recrutement : liste des entreprises référencées</title>
-    <link rel="stylesheet" href="styles.css" type="text/css" />
-  </head>
-
-  <body>
-  
   	<%@include file="header.jsp" %>
   		<div id="content">
   		

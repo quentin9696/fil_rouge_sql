@@ -5,6 +5,15 @@
 <%
   		Object utilisateur = session.getAttribute("utilisateur");
 	%>
+	<html>
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Cabinet de recrutement</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+  </head>
+
+  <body>
   	<table style="border-collapse: collapse; width: 100%; border: 1px;">
 	    <tr>
         <td  style="vertical-align: middle; font-size: 18px; color: #564b47; font-weight: bolder;">Cabinet de recrutement</td>

@@ -10,16 +10,7 @@
 // Récupération du service (bean session)
 	IServiceEntreprise serviceEntreprise = (IServiceEntreprise) ServicesLocator.getInstance().getRemoteInterface("ServiceEntreprise");
 %>
-<html>
 
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Cabinet de recrutement</title>
-    <link rel="stylesheet" href="styles.css" type="text/css" />
-  </head>
-
-  <body>
-  
 		<%@include file="header.jsp" %>
   		<div id="content">
 		
