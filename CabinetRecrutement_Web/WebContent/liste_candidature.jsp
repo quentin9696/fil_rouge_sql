@@ -65,6 +65,7 @@
 	<% 
 		}
   	%>
+  	<p align="center"><a href="cabinet_recrutement_candidatures_rss.jsp"><img src="images/icone_rss.png" alt="" border="0"/></a></p>
     </div>
   </body>
   

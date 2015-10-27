@@ -45,6 +45,7 @@
 			       	}
 			       %> 
 			</table>
+			<p align="center"><a href="cabinet_recrutement_offres_rss.jsp"><img src="images/icone_rss.png" alt="" border="0"/></a></p>
 		</div>
 
   </body>
