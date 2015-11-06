@@ -88,13 +88,22 @@
 						  		offreModif.setEntreprise(e);
 						  		offreModif.setDateDepot(offre.getDateDepot());
 						  		
+						  	//Recupere la checkBox !
+					  			String[] checkboxes = request.getParameterValues("secteur");
+						  	
+						  		if(checkboxes == null) {
+						  			%>
+						  			<p class="erreur">Il faut au moins 1 secteur d'activité !</p>
+						  			<%	
+						  		}
+						  		else {
+						  		
 						  		offreModif = serviceOffre.updateOffre(offreModif);
 						  		
 						  		Set<SecteurActivite> listeSecteurActivite = offre.getSecteurActivites();
-						  		listeSecteurActivite.clear();	
+						  		listeSecteurActivite.clear();	    
+						  		
 								    
-								    //Recupere la checkBox !
-						  			String[] checkboxes = request.getParameterValues("secteur");
 						  			
 						  			if (checkboxes != null && checkboxes.length > 0) {
 						  				
@@ -187,6 +196,7 @@
 						  			
 						  			<%
 					  			}
+					  		}
 					  		}
 					  	else {
 					  		%>

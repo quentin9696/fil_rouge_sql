@@ -46,7 +46,7 @@
   	  		String desc = request.getParameter("desc");
   	  		String profil = request.getParameter("profil");
   	  		
-  	  		if(titre == null && titre.isEmpty()) {
+  	  		if(titre.isEmpty()) {
   	  			%>
   	  			<p class="erreur" > Erreur : Le titre est obligatoire !</p>
   	  			<%

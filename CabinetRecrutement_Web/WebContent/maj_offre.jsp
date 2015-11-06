@@ -22,6 +22,19 @@ IServiceSecteurActiviteRemote serviceSecteurActivite = (IServiceSecteurActiviteR
   <%@include file="header.jsp" %>
   <div id="content">
   <%
+  if(utilisateur == null) {
+		%>
+		<p class="erreur">Vous n'êtes pas connecté !</p>
+		<%	
+	}
+	else if(utilisateur instanceof Candidature) {
+		%>
+		<p class ="erreur">Seules les entreprises peuvent accéder à cette page.
+		<%
+	}
+	else {
+		Entreprise e = (Entreprise) utilisateur;
+		
   	if(request.getParameter("id").isEmpty()) {
   		out.println("L'offre d'emploi doit être spécifiée <br/>");
   	}
@@ -29,8 +42,18 @@ IServiceSecteurActiviteRemote serviceSecteurActivite = (IServiceSecteurActiviteR
   		
   		int id = new Integer(request.getParameter("id"));
   		OffreEmploi offre = serviceOffre.getOffreEmploisById(id);
+  		
+  		int idEnt = e.getId();
+  		int idEntOffre = offre.getEntreprise().getId();
+  		
   		if(offre == null) {
   			out.println("L'offre d'emploi " + id + " n'a pas été trouvée ! <br/>");
+  		}
+  		else if (idEnt != idEntOffre) {
+  			%>
+  			<p class="erreur">Ce n'est pas une de vos offres d'emplois</p>
+  			<%
+  			
   		}
   		else {
   %>
@@ -130,6 +153,7 @@ IServiceSecteurActiviteRemote serviceSecteurActivite = (IServiceSecteurActiviteR
   		<p class="erreur">N'essayez pas de pirater le site. Votre adresse ip ("+ request.getRemoteAddr() + ") vient d'être envoyée à la police !</p>
   		<%
   	}
+	}
 	%>
     </div>
 
